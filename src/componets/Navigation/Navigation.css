@@ -1,0 +1,44 @@
+.navigation__landing {
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.navigation__landing-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 30px;
+    list-style: none;
+}
+
+.navigation__landing-link {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: 70px;
+    text-align: center;
+}
+
+.active {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    background-color: #3DDC84;
+    padding: 8px 20px;
+    border-radius: 3px;
+
+}
+
+.white {
+    color: #fff;
+}
