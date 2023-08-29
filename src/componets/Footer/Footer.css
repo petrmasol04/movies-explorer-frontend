@@ -19,6 +19,7 @@
     border-bottom: 1px solid #424242;
     padding-bottom: 20px;
     margin: 0;
+    color: #8B8B8B;
 }
 
 .footer__copyright {
@@ -39,4 +40,35 @@
     line-height: 1.2;
     margin: 0;
     text-decoration: none;
+    color: #fff;
+}
+
+@media screen and (max-width: 1020px) {
+    .footer__container {
+        padding: 78px 30px 20px;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .footer__container {
+        padding: 78px 14px 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 31px;
+    }
+
+    .footer__copyright {
+        order: 1;
+        color: #8B8B8B;
+    }
+
+    .footer__nav-list {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer__nav-link {
+        font-size: 12px;
+    }
 }

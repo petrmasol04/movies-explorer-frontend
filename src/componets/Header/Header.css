@@ -3,14 +3,31 @@
     width: 100%;
 }
 
+.header__dark {
+    background-color: #202020;
+}
+
 .header__container {
     display: flex;
     align-items: center;
-    padding: 18px 0;
+    padding: 18px 70px;
 
 }
 
 .header__logo {
-    margin-left: 70px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1020px) {
+    .header__container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header__container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
 }

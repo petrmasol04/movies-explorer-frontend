@@ -1,5 +1,3 @@
-.about {}
-
 .about__container {
     padding: 110px 70px 101px;
 }
@@ -69,4 +67,78 @@
 .about__link:hover {
     opacity: .6;
     transition: .4s;
+}
+
+@media screen and (max-width: 1020px) {
+    .about__title {
+        margin-bottom: 67px;
+        padding-bottom: 23px;
+    }
+
+    .about__container {
+        padding: 90px 30px;
+    }
+
+    .about__subtitle {
+        margin: 0 0 16px;
+        font-size: 40px;
+    }
+
+    .about__text {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .about__text_me {
+        font-size: 12px;
+        margin-bottom: 87px;
+    }
+
+    .about__photo {
+        max-width: 255px;
+        max-height: 260px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .about__wrapp {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .about__photo {
+        max-width: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about__title {
+        margin-bottom: 60px;
+        padding-bottom: 14px;
+    }
+
+    .about__container {
+        padding: 90px 14px;
+    }
+
+    .about__subtitle {
+        margin-bottom: 16px;
+        font-size: 30px;
+    }
+
+    .about__text {
+        font-size: 11px;
+        margin-bottom: 20px;
+    }
+
+    .about__text_me {
+        font-size: 11px;
+        margin-bottom: 40px;
+    }
+
+    .about__photo {
+        min-width: 292px;
+        min-height: 352px;
+    }
 }
