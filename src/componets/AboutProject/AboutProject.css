@@ -1,128 +1,149 @@
 .project__container {
-    padding: 110px 70px;
+  padding: 110px 70px;
 }
 
 .project__title {
-    border-bottom: 1px solid #dadada;
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 70px;
-    margin-top: 0;
-    padding-bottom: 23px;
-    line-height: 1.2;
+  border-bottom: 1px solid #dadada;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 70px;
+  margin-top: 0;
+  padding-bottom: 23px;
+  line-height: 1.2;
+  letter-spacing: -0.88px;
 }
 
 .project__list {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 110px;
-    list-style: none;
-    gap: 40px;
-    padding: 0;
-    margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 110px;
+  list-style: none;
+  gap: 40px;
+  padding: 0;
+  margin-top: 0;
 }
 
 .project__item {
-    max-width: 550px;
+  max-width: 550px;
 }
 
 .project__subtitle {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 26px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 26px;
+  letter-spacing: -0.8px;
 }
 
 .project__text {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .project__process {
-    grid-row-gap: 16px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template: repeat(2, min-content) /228px 1fr;
-    line-height: 1.2;
-    row-gap: 16px;
-    text-align: center;
+  grid-row-gap: 16px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template: repeat(2, min-content) / 228px 1fr;
+  line-height: 1.1;
+  row-gap: 16px;
+  text-align: center;
 }
 
 .project__process_period {
-    margin: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .project__process_period_active {
-    background-color: #2be080;
-    border-bottom: 9px solid #2be080;
-    border-top: 9px solid #2be080;
-    color: black;
+  background-color: #2be080;
+  border-bottom: 9px solid #2be080;
+  border-top: 9px solid #2be080;
+  color: black;
 }
 
 .project__process_period_unactive {
-    background-color: #303030;
-    border-bottom: 9px solid #303030;
-    border-top: 9px solid #303030;
+  background-color: #303030;
+  border-bottom: 9px solid #303030;
+  border-top: 9px solid #303030;
 }
 
 .project__process_name {
-    color: #8B8B8B;
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 1020px) {
-    .project__container {
-        padding: 90px 30px;
-    }
+  .project__container {
+    padding: 90px 50px;
+  }
 
-    .project__process {
-        grid-template-columns: minmax(100px, 228px) minmax(184px, 912px);
-    }
+  .project__process {
+    grid-template-columns: minmax(100px, 140px) minmax(184px, 528px);
+    row-gap: 14px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .project__title {
-        margin-bottom: 67px;
-        padding-bottom: 23px;
-    }
+  .project__title {
+    margin-bottom: 67px;
+    padding-bottom: 23px;
+  }
 
-    .project__subtitle {
-        margin-bottom: 22px;
-    }
+  .project__subtitle {
+    margin-bottom: 22px;
+  }
 
-    .project__text {
-        font-size: 12px;
-    }
+  .project__text {
+    font-size: 12px;
+  }
 
-    .project__item {
-        max-width: 320px;
-    }
+  .project__item {
+    max-width: 320px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .project__container {
-        padding: 60px 14px;
-    }
+  .project__container {
+    padding: 70px 18px;
+  }
 
-    .project__list {
-        flex-direction: column;
-        gap: 56px;
-    }
+  .project__list {
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 60px;
+  }
 
-    .project__title {
-        font-size: 18px;
-        padding-bottom: 28px;
-        margin-bottom: 60px;
-        grid-row: 1;
-    }
+  .project__title {
+    font-size: 18px;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
+    grid-row: 1;
+  }
 
-    .project__subtitle {
-        font-size: 18px;
-        margin-bottom: 16px;
-    }
+  .project__subtitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
 
-    .project__text {
-        font-size: 11px;
-    }
+  .project__text {
+    font-size: 11px;
+  }
+
+  .project__process {
+    grid-template-columns: minmax(100px, 108px) minmax(184px, 184px);
+    row-gap: 14px;
+  }
+
+  .project__process_period {
+    font-size: 11px;
+  }
+
+  .project__process_name {
+    font-size: 11px;
+  }
 }

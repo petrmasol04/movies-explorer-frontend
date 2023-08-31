@@ -1,75 +1,75 @@
 .filter__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
 }
 
 .filter__text {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .filter__switch {
-    display: inline-block;
-    position: relative;
-    width: 36px;
-    height: 20px;
-    background-color: #EBEBEB;
-    border-radius: 20px;
-    z-index: 1;
+  display: inline-block;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  z-index: 1;
 }
 
 .filter__input {
-    height: 0;
-    width: 0;
-    opacity: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
 }
 
 .filter__slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #EBEBEB;
-    border-radius: 20px;
-    transition: .3s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
 .filter__slider::before {
-    content: "";
-    position: absolute;
-    cursor: pointer;
-    top: 1px;
-    left: 2px;
-    width: 17px;
-    height: 17px;
-    ;
-    background-color: #FFF;
-    border-radius: 50%;
-    transition: .3s;
+  content: "";
+  position: absolute;
+  cursor: pointer;
+  top: 1px;
+  left: 2px;
+  width: 17px;
+  height: 17px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
-.filter__input:checked+.filter__slider {
-    background-color: #2BE080;
+.filter__input:checked + .filter__slider {
+  background-color: #2be080;
 }
 
-.filter__input:checked+.filter__slider::before {
-    transform: translateX(16px);
+.filter__input:checked + .filter__slider::before {
+  transform: translateX(16px);
 }
 
 @media screen and (max-width: 768px) {
-    .filter__container {
-        flex-direction: row;
-    }
+  .filter__container {
+    flex-direction: row-reverse;
+    gap: 16px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .filter__text {
-        font-size: 11px;
-    }
+  .filter__text {
+    font-size: 11px;
+  }
 }
