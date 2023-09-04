@@ -7,12 +7,9 @@ function Form() {
   const location = useLocation();
   const { values, isValid, checkParams } = useFormValidation();
   const [isInputActive, setIsInputActive] = useState(false);
-  console.log(isInputActive);
+
   function handleSubmit(e) {
-    e.preventDefault();
-    console.log(isInputActive);
     console.log("Сохранены изменения");
-    setIsInputActive(false);
   }
 
   useEffect(() => {
@@ -39,7 +36,7 @@ function Form() {
               required
               minLength="2"
               maxLength="30"
-              value={values.name || ""}
+              value={values.name || "Пётр"}
               onChange={checkParams}
               disabled={!isInputActive}
             />
@@ -56,7 +53,7 @@ function Form() {
               required
               minLength="2"
               maxLength="50"
-              value={values.email || ""}
+              value={values.email || "test@test.ru"}
               onChange={checkParams}
               disabled={!isInputActive}
             />
