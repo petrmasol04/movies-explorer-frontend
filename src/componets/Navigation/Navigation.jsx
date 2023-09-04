@@ -23,7 +23,7 @@ function Navigation() {
               </Link>
             </li>
             <li className="navigation-landing__item">
-              <Link className="navigation-landingt__link active" to="/signin">
+              <Link className="navigation-landing__link active" to="/signin">
                 Войти
               </Link>
             </li>

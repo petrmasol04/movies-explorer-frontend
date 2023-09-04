@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
 function Header() {
-  const pathesWithHeader = ["/", "/saved-movies", "/movies"];
+  const pathesWithHeader = ["/", "/saved-movies", "/movies", "/profile"];
   const { pathname } = useLocation();
   const hideHeader = pathesWithHeader.includes(pathname);
   const headerClassNames = `header ${

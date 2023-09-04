@@ -46,7 +46,7 @@
   margin: 0;
 }
 
-.techs__list_item {
+.techs__list-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +84,7 @@
     font-size: 12px;
   }
 
-  .techs__list_item {
+  .techs__list-item {
     transition: 0.4s;
     min-width: 84px;
     min-height: 57px;

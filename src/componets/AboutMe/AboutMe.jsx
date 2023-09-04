@@ -11,7 +11,7 @@ function AboutMe() {
           <div className="about__wrapp-text">
             <h3 className="about__subtitle">Пётр</h3>
             <p className="about__text">Фронтенд - разработчик, 28 лет</p>
-            <p className="about__text_me">
+            <p className="about__text-me">
               Я&nbsp;живу в&nbsp;Санкт-Петербурге. Закончил факультет
               строительства автомобильных дорог в&nbsp;СПбГАСУ . Люблю активный
               отдых, такие как горнолыжный спорт, эндуринг, вэйк и сап сёрф.
