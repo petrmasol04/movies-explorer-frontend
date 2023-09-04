@@ -21,7 +21,7 @@ function Portfolio() {
             <li className="portfolio__list-item">
               <a
                 className="portfolio__link"
-                href="https://github.com/petrmasol04/how-to-learn"
+                href="https://github.com/petrmasol04/how-to-learn" /* При переходе у меня все открывается... */
                 target="_blank"
                 rel="noreferrer"
               >

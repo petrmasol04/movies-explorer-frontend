@@ -10,6 +10,7 @@
   font-weight: 400;
   line-height: 1.2;
   margin: 0;
+  cursor: pointer;
 }
 
 .filter__switch {

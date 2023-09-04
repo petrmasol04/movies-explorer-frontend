@@ -24,7 +24,7 @@ function Form() {
   if (location.pathname === "/profile") {
     return (
       <div className="form__container">
-        <form className="form form__profile" onSubmit={handleSubmit}>
+        <form className="form form__profile" onSubmit={handleSubmit} noValidate>
           <label className="form__label-profile">
             Имя
             <input
