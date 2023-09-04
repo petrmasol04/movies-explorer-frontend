@@ -13,8 +13,11 @@
 }
 
 .promo__img {
+  background: url(../../images/image_promo.svg) no-repeat center / contain;
   box-sizing: border-box;
   object-fit: cover;
+  width: 310px;
+  height: 304px;
 }
 
 .promo__info {
@@ -63,13 +66,16 @@
 
 @media screen and (max-width: 1020px) {
   .promo__container {
-    padding: 140px 30px 85px;
+    padding: 140px 30px 76px;
     flex-direction: column-reverse;
     gap: 48px;
     align-items: center;
   }
 
   .promo__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     max-width: 680px;
   }
@@ -79,31 +85,36 @@
   }
 
   .promo__info-subtitle {
-    margin: 22px auto 102px;
+    margin: 22px auto 92px;
     max-width: 260px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .promo__container {
-    padding: 70px 10px 40px;
+    padding: 70px 10px 30px;
     gap: 44px;
   }
 
   .promo__info {
     max-width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .promo__img {
-    max-width: 210px;
+    width: 210px;
+    height: 206px;
   }
 
   .promo__info-title {
     font-size: 30px;
-    letter-spacing: -1px;
+    letter-spacing: -1.2px;
+    line-height: 38px;
   }
 
   .promo__info-subtitle {
-    margin: 24px auto 90px;
+    margin: 24px 0 80px;
   }
 }

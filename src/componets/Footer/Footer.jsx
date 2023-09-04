@@ -15,20 +15,21 @@ function Footer() {
           </h2>
           <p className="footer__copyright">© 2023</p>
           <nav className="footer__nav-list">
-            <Link
+            <a
               className="footer__nav-link"
-              to={"https://practicum.yandex.ru/"}
+              href="https://practicum.yandex.ru/"
               target="_blank"
             >
               Яндекс.Практикум
-            </Link>
-            <Link
+            </a>
+            <a
               className="footer__nav-link"
-              to={"https://github.com/petrmasol04/"}
+              href="https://github.com/petrmasol04/"
               target="_blank"
+              rel="noreferrer"
             >
               Github
-            </Link>
+            </a>
           </nav>
         </div>
       </footer>

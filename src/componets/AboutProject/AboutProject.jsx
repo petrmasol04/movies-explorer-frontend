@@ -26,14 +26,14 @@ function AboutProject() {
           </li>
         </ul>
         <div className="project__process">
-          <p className="project__process_period project__process_period_active">
+          <p className="project__process-period project__process-period_active">
             1 неделя
           </p>
-          <span className="project__process_name">Back-end</span>
-          <p className="project__process_period project__process_period_unactive">
+          <span className="project__process-name">Back-end</span>
+          <p className="project__process-period project__process-period_unactive">
             4 недели
           </p>
-          <span className="project__process_name">Front-end</span>
+          <span className="project__process-name">Front-end</span>
         </div>
       </div>
     </section>

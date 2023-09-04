@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import myPhoto from "./../../images/me.jpg";
 import "./AboutMe.css";
 
@@ -17,7 +18,12 @@ function AboutMe() {
               Кодить начал меньше года назад. Начал с простой вёрстки и тут
               понеслось.
             </p>
-            <a className="about__link" target="_blank">
+            <a
+              className="about__link"
+              target="_blank"
+              href="https://github.com/petrmasol04/"
+              rel="noreferrer"
+            >
               Github
             </a>
           </div>

@@ -52,26 +52,26 @@
   text-align: center;
 }
 
-.project__process_period {
+.project__process-period {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
 }
 
-.project__process_period_active {
+.project__process-period_active {
   background-color: #2be080;
   border-bottom: 9px solid #2be080;
   border-top: 9px solid #2be080;
   color: black;
 }
 
-.project__process_period_unactive {
+.project__process-period_unactive {
   background-color: #303030;
   border-bottom: 9px solid #303030;
   border-top: 9px solid #303030;
 }
 
-.project__process_name {
+.project__process-name {
   color: #8b8b8b;
   font-weight: 500;
   font-size: 14px;
@@ -132,6 +132,7 @@
 
   .project__text {
     font-size: 11px;
+    line-height: 16px;
   }
 
   .project__process {
@@ -139,11 +140,11 @@
     row-gap: 14px;
   }
 
-  .project__process_period {
+  .project__process-period {
     font-size: 11px;
   }
 
-  .project__process_name {
+  .project__process-name {
     font-size: 11px;
   }
 }

@@ -38,6 +38,12 @@
   transition: 0.4s;
 }
 
+@media screen and (max-width: 768px) {
+  .register__container {
+    margin-top: 232px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .register {
     display: block;

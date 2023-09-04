@@ -4,20 +4,16 @@ import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
 function Header() {
-  const pathesWithHeader = ["/", "/saved-movies", "/movies", "/profile"];
+  const pathesWithHeader = ["/", "/saved-movies", "/movies"];
   const { pathname } = useLocation();
-  const hasHeader = pathesWithHeader.includes(pathname);
-  const headerDark =
-    pathname === "/"
-      ? { backgroundColor: "#073042" }
-      : { backgroundColor: "#202020" };
+  const hideHeader = pathesWithHeader.includes(pathname);
+  const headerClassNames = `header ${
+    pathname === "/" ? "header_place_main" : ""
+  }`;
 
   return (
-    hasHeader && (
-      <header
-        className={hasHeader ? "header" : "header__dark"}
-        style={headerDark}
-      >
+    hideHeader && (
+      <header className={headerClassNames}>
         <div className="header__container container">
           <Logo />
           <Navigation />

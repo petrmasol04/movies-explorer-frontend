@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 import "./MoviesCardList.css";
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, hasMoreButton = true }) {
   const { pathname } = useLocation();
   return (
     <div className="movies__container container">
@@ -23,9 +23,11 @@ function MoviesCardList({ movies }) {
           );
         })}
       </ul>
-      <button className="movies__button" type="button">
-        Ещё
-      </button>
+      {hasMoreButton && (
+        <button className="movies__button" type="button">
+          Ещё
+        </button>
+      )}
     </div>
   );
 }

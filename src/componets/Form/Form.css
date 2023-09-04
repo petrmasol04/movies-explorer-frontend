@@ -54,11 +54,17 @@
   background-color: #4285f4;
   color: #fff;
   cursor: pointer;
+  width: 100%;
 }
 
 .form__btn:hover {
   opacity: 0.8;
   transition: 0.4s;
+}
+
+.form__btn_type_submit:disabled {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .form__btn_signin {
@@ -115,6 +121,23 @@
 }
 
 .form__btn-profile:hover {
+  opacity: 0.7;
+}
+
+.form__btn-exit {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  align-self: center;
+  color: #ee3465;
+  border: none;
+  background-color: #202020;
+  cursor: pointer;
+  width: max-content;
+}
+
+.form__btn-exit:hover {
   opacity: 0.7;
 }
 

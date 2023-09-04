@@ -15,15 +15,15 @@ function Navigation() {
   return (
     <>
       {location.pathname === "/" && (
-        <nav className="navigation__landing">
-          <ul className="navigation__landing-list">
-            <li className="navigation__landing-item">
-              <Link className="navigation__landing-link blue" to="/signup">
+        <nav className="navigation-landing">
+          <ul className="navigation-landing__list">
+            <li className="navigation-landing__item">
+              <Link className="navigation-landing__link blue" to="/signup">
                 Регистрация
               </Link>
             </li>
-            <li className="navigation__landing-item">
-              <Link className="navigation__landingt-link active" to="/signin">
+            <li className="navigation-landing__item">
+              <Link className="navigation-landingt__link active" to="/signin">
                 Войти
               </Link>
             </li>

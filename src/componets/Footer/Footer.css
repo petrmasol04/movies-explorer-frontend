@@ -1,5 +1,6 @@
 .footer {
-  display: block;
+  display: flex;
+  flex-shrink: 0;
 }
 
 .footer__container {
@@ -43,9 +44,13 @@
   color: #fff;
 }
 
+.footer__nav-link:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 1020px) {
   .footer__container {
-    padding: 78px 50px 20px;
+    padding: 78px 30px 20px;
   }
 }
 

@@ -9,31 +9,34 @@ function Portfolio() {
         <nav>
           <ul className="portfolio__list">
             <li className="portfolio__list-item">
-              <Link
+              <a
                 className="portfolio__link"
-                to={"https://github.com/petrmasol04/russian-travel- "}
+                href="https://github.com/petrmasol04/russian-travel "
                 target="_blank"
+                rel="noreferrer"
               >
                 Статичный сайт <span>↗</span>
-              </Link>
+              </a>
             </li>
             <li className="portfolio__list-item">
-              <Link
+              <a
                 className="portfolio__link"
-                to={"https://github.com/petrmasol04/how-to-learn"}
+                href="https://github.com/petrmasol04/how-to-learn"
                 target="_blank"
+                rel="noreferrer"
               >
                 Адаптивный сайт <span>↗</span>
-              </Link>
+              </a>
             </li>
             <li className="portfolio__list-item">
-              <Link
+              <a
                 className="portfolio__link"
-                to={"https://github.com/petrmasol04/react-mesto-api-full-gha"}
+                href="https://github.com/petrmasol04/react-mesto-api-full-gha"
                 target="_blank"
+                rel="noreferrer"
               >
                 Одностраничное приложение <span>↗</span>
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

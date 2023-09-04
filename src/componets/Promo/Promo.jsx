@@ -1,6 +1,5 @@
 import { HashLink } from "react-router-hash-link";
 import "./Promo.css";
-import imagepromo from "../../images/image_promo.svg";
 
 function Promo() {
   return (
@@ -18,7 +17,7 @@ function Promo() {
             Узнать больше
           </HashLink>
         </div>
-        <img className="promo__img" src={imagepromo} alt="Промо изображение" />
+        <div className="promo__img"></div>
       </div>
     </section>
   );

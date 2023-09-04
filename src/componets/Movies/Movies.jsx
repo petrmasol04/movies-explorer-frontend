@@ -4,7 +4,7 @@ import movies from "../../utils/constants/movies";
 
 function Movies() {
   return (
-    <main className="movie container">
+    <main className="movies container">
       <SearchForm />
       <MoviesCardList movies={movies} />
     </main>

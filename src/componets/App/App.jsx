@@ -11,19 +11,21 @@ import Footer from "../Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
