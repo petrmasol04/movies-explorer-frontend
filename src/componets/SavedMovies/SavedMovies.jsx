@@ -1,13 +1,14 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import savedMovies from "../../utils/constants/saved_movies";
+import "./SavedMovies.css";
 
 function SavedMovies() {
   return (
-    <main className="saved-movies">
+    <section className="saved-movies">
       <SearchForm />
-      <MoviesCardList movies={savedMovies} />
-    </main>
+      <MoviesCardList movies={savedMovies} hasMoreButton={false} />
+    </section>
   );
 }
 

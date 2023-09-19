@@ -1,24 +1,26 @@
 import { useLocation } from "react-router-dom";
 import "./Header.css";
-import Navigation from '../Navigation/Navigation';
+import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
 function Header() {
+  const pathesWithHeader = ["/", "/saved-movies", "/movies", "/profile"];
+  const { pathname } = useLocation();
+  const hideHeader = pathesWithHeader.includes(pathname);
+  const headerClassNames = `header ${
+    pathname === "/" ? "header_place_main" : ""
+  }`;
 
-    const pathesWithHeader = ["/", "/saved-movies", "/movies", "/profile"]
-    const { pathname } = useLocation();
-    const hasHeader = pathesWithHeader.includes(pathname);
-    const headerDark = pathname === '/' ? { backgroundColor: '#073042' } : { backgroundColor: '#202020' }
-
-    return (
-        hasHeader &&
-        <header className={hasHeader ? "header" : "header__dark"} style={headerDark}>
-            <div className="header__container container">
-                <Logo />
-                <Navigation />
-            </div>
-        </header >
-    );
+  return (
+    hideHeader && (
+      <header className={headerClassNames}>
+        <div className="header__container container">
+          <Logo />
+          <Navigation />
+        </div>
+      </header>
+    )
+  );
 }
 
 export default Header;

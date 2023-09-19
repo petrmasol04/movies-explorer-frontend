@@ -1,128 +1,161 @@
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form__block {
-    border-bottom: 1px solid #424242;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  border-bottom: 1px solid #424242;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .form__block:has(.form__input:focus) {
-    border-color: #4285F4;
+  border-color: #4285f4;
 }
 
 .form__name {
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #8B8B8B;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #8b8b8b;
 }
 
 .form__input {
-    font-size: 14px;
-    font-weight: 400;
-    min-height: 17px;
-    color: #fff;
-    background-color: #202020;
-    border: none;
-    outline: none;
-    margin-bottom: 10px;
-    background: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 17px;
+  color: #fff;
+  background-color: #202020;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  background: transparent;
 }
 
 .form__error {
-    min-height: 12px;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #EE3465;
-    margin-top: 6px;
+  min-height: 12px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ee3465;
+  margin-top: 6px;
 }
 
 .form__btn {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.2;
-    margin: 70px 0 16px;
-    padding: 0;
-    min-height: 45px;
-    border: none;
-    border-radius: 3px;
-    background-color: #4285F4;
-    color: #FFF;
-    cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 134px 0 16px;
+  padding: 0;
+  min-height: 45px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4285f4;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+}
 
-    &:hover {
-        opacity: .8;
-        transition: .4s;
+.form__btn:hover {
+  opacity: 0.8;
+  transition: 0.4s;
+}
 
-    }
+.form__btn_type_submit:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.form__btn_signin {
+  margin-top: 215px;
 }
 
 .form__profile {
-    align-items: center;
+  align-items: center;
 }
 
 .form__container-profile {
-    min-width: 410px;
+  min-width: 410px;
 }
 
 .form__label-profile {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1.2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-
 .form__input-profile {
-    background-color: #202020;
-    min-width: 200px;
-    border: none;
-    outline: none;
-    text-align: right;
-    color: #FFF;
+  background-color: #202020;
+  min-width: 200px;
+  border: none;
+  outline: none;
+  text-align: right;
+  color: #fff;
 }
 
 .form__error-profile {
-    text-align: center;
+  text-align: center;
 }
 
 .form__line {
-    background-color: #424242;
-    height: 1px;
-    margin: 16px 0 17px;
-    width: 100%;
+  background-color: #424242;
+  height: 1px;
+  margin: 16px 0 17px;
+  width: 100%;
 }
 
 .form__btn-profile {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 220px 0 16px;
-    border: none;
-    background-color: #202020;
-    cursor: pointer;
-    width: max-content;
-    color: #FFF;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 205px 0 16px;
+  border: none;
+  background-color: #202020;
+  cursor: pointer;
+  width: max-content;
+  color: #fff;
+}
 
-    &:hover {
-        opacity: .7;
-    }
+.form__btn-profile:hover {
+  opacity: 0.7;
+}
+
+.form__btn-exit {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  align-self: center;
+  color: #ee3465;
+  border: none;
+  background-color: #202020;
+  cursor: pointer;
+  width: max-content;
+}
+
+.form__btn-exit:hover {
+  opacity: 0.7;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 @media screen and (max-width: 480px) {
-    .form__btn {
-        font-size: 12px;
-        margin: 150px 0 14px;
-    }
+  .form__btn {
+    font-size: 12px;
+    margin: 222px 0 0;
+  }
+
+  .form__btn_signin {
+    margin-top: 300px;
+  }
+
+  .form__btn-profile {
+    margin-top: 364px;
+  }
 }

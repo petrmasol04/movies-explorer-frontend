@@ -24,7 +24,7 @@ function MoviesCard({ id, nameRU, image, trailerLink }) {
     <li className="card">
       <div className="card__wrapp">
         <div className="card__info">
-          <p className="card__title">{nameRU}</p>
+          <h2 className="card__title">{nameRU}</h2>
           <p className="card__duration">1ч 47м</p>
         </div>
         <button
