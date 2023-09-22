@@ -13,19 +13,27 @@ class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    registerUser(data) {
+    registerUser(name, email, password) {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ name, email, password })
         }).then(res => this._handleRequest(res));
     }
 
-    loginUser(data) {
+    loginUser(email, password) {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            body: JSON.stringify({ email, password }),
+            credentials: "include"
+        }).then(res => this._handleRequest(res));
+    }
+
+    logOut() {
+        return fetch(`${this._baseUrl}/signout`, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
             credentials: "include"
         }).then(res => this._handleRequest(res));
     }
@@ -59,7 +67,6 @@ class Api {
             .then(res => this._handleRequest(res));
     }
 
-
     createMovie(movie) {
         return fetch(`${this._baseUrl}/movies`,
             {
@@ -81,3 +88,12 @@ class Api {
             .then(res => this._handleRequest(res));
     }
 }
+// movies-diplomnaya.nomoredomainsrocks.ru
+const apiConfig = {
+    baseUrl: 'http://localhost:3000',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}
+
+export const api = new Api(apiConfig);

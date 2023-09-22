@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import "./Form.css";
 
-function Form({ initialValues = {} }) {
+function Form({ initialValues = {}, onSubmit, onClick }) {
   const location = useLocation();
   const { values, isValid, checkParams } = useFormValidation(initialValues);
   const [isInputActive, setIsInputActive] = useState(false);
 
   function handleSubmit(e) {
-    console.log("Сохранены изменения");
+    console.log(values);
+    e.preventDefault();
+    onSubmit(values);
   }
 
   function handleRedactClick() {
@@ -71,7 +73,11 @@ function Form({ initialValues = {} }) {
               >
                 Редактировать
               </button>
-              <button className="form__btn-exit" type="button">
+              <button
+                className="form__btn-exit"
+                type="button"
+                onClick={onClick}
+              >
                 Выйти из аккаунта
               </button>
             </>
@@ -83,7 +89,7 @@ function Form({ initialValues = {} }) {
   if (location.pathname === "/signup") {
     return (
       <div className="form__container">
-        <form className="form" noValidate>
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <label className="form__block">
             <span className="form__name">Имя</span>
             <input
@@ -93,6 +99,8 @@ function Form({ initialValues = {} }) {
               id="name"
               autoComplete="off"
               placeholder="Введите имя"
+              onChange={checkParams}
+              value={values.name || ""}
               required
             />
           </label>
@@ -106,6 +114,8 @@ function Form({ initialValues = {} }) {
               id="email"
               autoComplete="off"
               placeholder="Введите email"
+              onChange={checkParams}
+              value={values.email || ""}
               required
             />
           </label>
@@ -119,11 +129,13 @@ function Form({ initialValues = {} }) {
               id="password"
               autoComplete="off"
               placeholder="Введите пароль"
+              onChange={checkParams}
+              value={values.password || ""}
               required
             />
           </label>
           <span className="form__error">Что-то пошло не так...</span>
-          <button className="form__btn" type="button">
+          <button className="form__btn" type="submit" disabled={!isValid}>
             Зарегистрироваться
           </button>
         </form>
@@ -133,7 +145,7 @@ function Form({ initialValues = {} }) {
   if (location.pathname === "/signin") {
     return (
       <div className="form__container">
-        <form className="form" noValidate>
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <label className="form__block">
             <span className="form__name">E-mail</span>
             <input
@@ -143,6 +155,8 @@ function Form({ initialValues = {} }) {
               id="email"
               autoComplete="off"
               placeholder="Введите email"
+              onChange={checkParams}
+              value={values.email || ""}
               required
             />
           </label>
@@ -156,11 +170,17 @@ function Form({ initialValues = {} }) {
               id="password"
               autoComplete="off"
               placeholder="Введите пароль"
+              value={values.password || ""}
+              onChange={checkParams}
               required
             />
           </label>
           <span className="form__error"></span>
-          <button className="form__btn form__btn_signin" type="button">
+          <button
+            className="form__btn form__btn_signin"
+            type="submit"
+            disabled={!isValid}
+          >
             Войти
           </button>
         </form>
