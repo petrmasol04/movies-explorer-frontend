@@ -1,8 +1,7 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import movies from "../../utils/constants/movies";
 
-function Movies() {
+function Movies({ movies }) {
   return (
     <main className="movies container">
       <SearchForm />

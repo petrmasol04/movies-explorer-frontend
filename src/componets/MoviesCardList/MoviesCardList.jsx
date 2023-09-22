@@ -5,20 +5,20 @@ import "./MoviesCardList.css";
 
 function MoviesCardList({ movies, hasMoreButton = true }) {
   const { pathname } = useLocation();
+  console.log(movies);
   return (
     <div className="movies__container container">
       <ul className="movies__list">
-        {movies.map(({ id, nameRU, image, trailerLink }) => {
+        {movies.map(({ id, _id, nameRU, image, trailerLink }) => {
           if (pathname === "/movies") {
             image = "https://api.nomoreparties.co" + image.url;
           }
           return (
             <MoviesCard
-              id={id}
               nameRU={nameRU}
               image={image}
               trailerLink={trailerLink}
-              key={id}
+              key={id ?? _id}
             />
           );
         })}

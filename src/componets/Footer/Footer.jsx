@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
@@ -15,21 +15,22 @@ function Footer() {
           </h2>
           <p className="footer__copyright">© 2023</p>
           <nav className="footer__nav-list">
-            <a
+            <Link
               className="footer__nav-link"
-              href="https://practicum.yandex.ru/"
+              to="//practicum.yandex.ru/"
               target="_blank"
+              rel="noreferrer"
             >
               Яндекс.Практикум
-            </a>
-            <a
+            </Link>
+            <Link
               className="footer__nav-link"
-              href="https://github.com/petrmasol04/"
+              to="//github.com/petrmasol04/"
               target="_blank"
               rel="noreferrer"
             >
               Github
-            </a>
+            </Link>
           </nav>
         </div>
       </footer>

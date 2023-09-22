@@ -1,23 +1,18 @@
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import "./Form.css";
 
-function Form() {
+function Form({ initialValues = {} }) {
   const location = useLocation();
-  const { values, isValid, checkParams } = useFormValidation();
+  const { values, isValid, checkParams } = useFormValidation(initialValues);
   const [isInputActive, setIsInputActive] = useState(false);
 
   function handleSubmit(e) {
     console.log("Сохранены изменения");
   }
 
-  useEffect(() => {
-    console.log({ isInputActive });
-  }, [isInputActive]);
-
   function handleRedactClick() {
-    console.log("тупица");
     setIsInputActive(true);
   }
 
@@ -36,7 +31,7 @@ function Form() {
               required
               minLength="2"
               maxLength="30"
-              value={values.name || "Пётр"}
+              value={values.name || ""}
               onChange={checkParams}
               disabled={!isInputActive}
             />

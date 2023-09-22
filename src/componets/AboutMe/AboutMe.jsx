@@ -18,14 +18,13 @@ function AboutMe() {
               Кодить начал меньше года назад. Начал с простой вёрстки и тут
               понеслось.
             </p>
-            <a
+            <Link
               className="about__link"
               target="_blank"
-              href="https://github.com/petrmasol04/"
-              rel="noreferrer"
+              to="https://github.com/petrmasol04/"
             >
               Github
-            </a>
+            </Link>
           </div>
           <img className="about__photo" src={myPhoto} alt="Фото студента" />
         </div>
