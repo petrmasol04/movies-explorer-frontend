@@ -4,13 +4,18 @@ import Form from "../Form/Form";
 import Logo from "../Logo/Logo";
 import "./Login.css";
 
-function Login({ onSignin }) {
+function Login({ onSignin, infoText, setInfoText }) {
   return (
     <section className="login">
       <div className="login__container">
         <Logo />
         <h1 className="login__title">Рады видеть!</h1>
-        <Form btnText="Войти" onSubmit={onSignin} />
+        <Form
+          btnText="Войти"
+          onSubmit={onSignin}
+          infoText={infoText}
+          setInfoText={setInfoText}
+        />
         <p className="login__subtitle">
           Еще не зарегистрированы?{" "}
           <Link className="login__link" to="/signup">

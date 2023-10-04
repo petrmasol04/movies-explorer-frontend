@@ -10,7 +10,9 @@ class Api {
         if (res.ok) {
             return res.json();
         }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return res
+            .json()
+            .then((err) => Promise.reject(`Ошибка: ${res.status}. ${err.message || "Произошла непредвиденная ошибка"}`));
     }
 
     registerUser(name, email, password) {
@@ -47,11 +49,11 @@ class Api {
             .then(res => this._handleRequest(res))
     }
 
-    updateUser(data) {
+    updateUser(name, email) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify(data),
+            body: JSON.stringify({ name, email }),
             credentials: "include"
         })
             .then(res => this._handleRequest(res));

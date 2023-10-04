@@ -3,19 +3,36 @@ import { useState } from "react";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import "./Form.css";
 
-function Form({ initialValues = {}, onSubmit, onClick }) {
+function Form({
+  initialValues = {},
+  onSubmit,
+  onClick,
+  infoText = "",
+  setInfoText,
+  isError,
+}) {
   const location = useLocation();
-  const { values, isValid, checkParams } = useFormValidation(initialValues);
+  const { values, isValid, checkParams, errors } =
+    useFormValidation(initialValues);
   const [isInputActive, setIsInputActive] = useState(false);
 
   function handleSubmit(e) {
-    console.log(values);
     e.preventDefault();
     onSubmit(values);
   }
 
   function handleRedactClick() {
     setIsInputActive(true);
+    if (infoText) {
+      setInfoText("");
+    }
+  }
+
+  function handleInputChange(evt) {
+    checkParams(evt);
+    if (infoText) {
+      setInfoText("");
+    }
   }
 
   if (location.pathname === "/profile") {
@@ -34,10 +51,11 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               minLength="2"
               maxLength="30"
               value={values.name || ""}
-              onChange={checkParams}
+              onChange={handleInputChange}
               disabled={!isInputActive}
             />
           </label>
+          <span className="form__error center">{errors.name}</span>
           <span className="form__line" />
           <label className="form__label-profile">
             E-mail
@@ -50,20 +68,34 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               required
               minLength="2"
               maxLength="50"
-              value={values.email || "test@test.ru"}
-              onChange={checkParams}
+              value={values.email || ""}
+              onChange={handleInputChange}
               disabled={!isInputActive}
+              pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
             />
           </label>
-          <span className="form__error center"></span>
+          <span className="form__error center">{errors.email}</span>
           {isInputActive ? (
-            <button
-              className="form__btn form__btn_type_submit"
-              type="submit"
-              disabled={!isValid}
-            >
-              Сохранить
-            </button>
+            <>
+              <span
+                className={`form__notification form__notification_type_profile ${
+                  !isError ? "form__notification_type_success" : ""
+                }`}
+              >
+                {infoText}
+              </span>
+              <button
+                className="form__btn form__btn_type_submit"
+                type="submit"
+                disabled={
+                  !isValid ||
+                  (values.name === initialValues.name &&
+                    values.email === initialValues.email)
+                }
+              >
+                Сохранить
+              </button>
+            </>
           ) : (
             <>
               <button
@@ -89,7 +121,11 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
   if (location.pathname === "/signup") {
     return (
       <div className="form__container">
-        <form className="form" onSubmit={handleSubmit} noValidate>
+        <form
+          className="form form_type_auth"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <label className="form__block">
             <span className="form__name">Имя</span>
             <input
@@ -99,12 +135,12 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               id="name"
               autoComplete="off"
               placeholder="Введите имя"
-              onChange={checkParams}
+              onChange={handleInputChange}
               value={values.name || ""}
               required
             />
           </label>
-          <span className="form__error"></span>
+          <span className="form__error">{errors.name}</span>
           <label className="form__block">
             <span className="form__name">E-mail</span>
             <input
@@ -114,12 +150,13 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               id="email"
               autoComplete="off"
               placeholder="Введите email"
-              onChange={checkParams}
+              onChange={handleInputChange}
               value={values.email || ""}
+              pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
               required
             />
           </label>
-          <span className="form__error"></span>
+          <span className="form__error">{errors.email}</span>
           <label className="form__block">
             <span className="form__name">Пароль</span>
             <input
@@ -129,13 +166,20 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               id="password"
               autoComplete="off"
               placeholder="Введите пароль"
-              onChange={checkParams}
+              onChange={handleInputChange}
               value={values.password || ""}
               required
             />
           </label>
-          <span className="form__error">Что-то пошло не так...</span>
-          <button className="form__btn" type="submit" disabled={!isValid}>
+          <span className="form__error">{errors.password}</span>
+          <span className="form__notification form__notification_type_signup">
+            {infoText}
+          </span>
+          <button
+            className="form__btn form__btn_type_submit"
+            type="submit"
+            disabled={!isValid}
+          >
             Зарегистрироваться
           </button>
         </form>
@@ -145,7 +189,11 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
   if (location.pathname === "/signin") {
     return (
       <div className="form__container">
-        <form className="form" onSubmit={handleSubmit} noValidate>
+        <form
+          className="form form_type_auth"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <label className="form__block">
             <span className="form__name">E-mail</span>
             <input
@@ -155,12 +203,13 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               id="email"
               autoComplete="off"
               placeholder="Введите email"
-              onChange={checkParams}
+              onChange={handleInputChange}
               value={values.email || ""}
+              pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
               required
             />
           </label>
-          <span className="form__error"></span>
+          <span className="form__error">{errors.email}</span>
           <label className="form__block">
             <span className="form__name">Пароль</span>
             <input
@@ -171,13 +220,16 @@ function Form({ initialValues = {}, onSubmit, onClick }) {
               autoComplete="off"
               placeholder="Введите пароль"
               value={values.password || ""}
-              onChange={checkParams}
+              onChange={handleInputChange}
               required
             />
           </label>
-          <span className="form__error"></span>
+          <span className="form__error">{errors.password}</span>
+          <span className="form__notification form__notification_type_signin">
+            {infoText}
+          </span>
           <button
-            className="form__btn form__btn_signin"
+            className="form__btn form__btn_type_submit form__btn_signin"
             type="submit"
             disabled={!isValid}
           >

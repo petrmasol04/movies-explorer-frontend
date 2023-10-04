@@ -23,6 +23,8 @@ function App() {
     email: "t@t",
   });
   const [isloading, setIsLoading] = useState(true);
+  const [infoText, setInfoText] = useState("");
+  const [isError, setIsError] = useState(true);
   const navigate = useNavigate();
 
   function getAllMovies() {
@@ -48,11 +50,9 @@ function App() {
         handleLogin({ email, password });
       })
       .catch((err) => {
-        console.log(err);
+        handleError(err);
+        setIsLoading(false);
       });
-    // .finally(() => {
-    //   setIsLoading(false);
-    // });
   }
 
   function handleLogin({ email, password }) {
@@ -65,12 +65,9 @@ function App() {
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
-        console.log(err);
-        // setIsLoading(false);
+        handleError(err);
+        setIsLoading(false);
       });
-    // .finally(() => {
-    //   setIsLoading(false);
-    // });
   }
 
   function handleLogOut() {
@@ -94,11 +91,29 @@ function App() {
         setLoggedIn(true);
       })
       .catch((err) => {
-        console.log(err);
+        handleError(err);
       })
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  function handleUpdateUser({ name, email }) {
+    api
+      .updateUser(name, email)
+      .then((user) => {
+        setCurrentUser(user);
+        setInfoText("Успешно обновлено");
+        setIsError(false);
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+  }
+
+  function handleError(err) {
+    setInfoText(err);
+    setIsError(true);
   }
 
   useEffect(() => {
@@ -117,10 +132,25 @@ function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/signin" element={<Login onSignin={handleLogin} />} />
+          <Route
+            path="/signin"
+            element={
+              <Login
+                onSignin={handleLogin}
+                infoText={infoText}
+                setInfoText={setInfoText}
+              />
+            }
+          />
           <Route
             path="/signup"
-            element={<Register onSignup={handleRegister} />}
+            element={
+              <Register
+                onSignup={handleRegister}
+                infoText={infoText}
+                setInfoText={setInfoText}
+              />
+            }
           />
           <Route
             path="/saved-movies"
@@ -148,6 +178,10 @@ function App() {
                 element={Profile}
                 loggedIn={loggedIn}
                 onLogOut={handleLogOut}
+                onUserUpdate={handleUpdateUser}
+                infoText={infoText}
+                setInfoText={setInfoText}
+                isError={isError}
               />
             }
           />
