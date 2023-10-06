@@ -59,7 +59,7 @@ class Api {
             .then(res => this._handleRequest(res));
     }
 
-    getMovie() {
+    getMovies() {
         return fetch(`${this._baseUrl}/movies`,
             {
                 headers: this._headers,

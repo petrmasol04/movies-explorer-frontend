@@ -3,9 +3,8 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 import "./MoviesCardList.css";
 
-function MoviesCardList({ movies, hasMoreButton = true }) {
+function MoviesCardList({ movies, hasMoreButton = false, onClick }) {
   const { pathname } = useLocation();
-  console.log(movies);
   return (
     <div className="movies__container container">
       <ul className="movies__list">
@@ -24,7 +23,7 @@ function MoviesCardList({ movies, hasMoreButton = true }) {
         })}
       </ul>
       {hasMoreButton && (
-        <button className="movies__button" type="button">
+        <button className="movies__button" type="button" onClick={onClick}>
           Ещё
         </button>
       )}

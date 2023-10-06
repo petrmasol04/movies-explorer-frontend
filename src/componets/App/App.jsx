@@ -9,7 +9,7 @@ import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 import Footer from "../Footer/Footer";
 import { moviesApi } from "../../utils/MoviesApi";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProtectedRouteElement from "../ProtectedRouteElement/ProtectedRouteElement";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { api } from "../../utils/MainApi";
@@ -17,6 +17,7 @@ import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [moviesSaved, setMoviesSaved] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: "Vasiya",
@@ -37,6 +38,24 @@ function App() {
         console.log(err);
       });
   }
+
+  const getSavedMovies = useCallback(() => {
+    api
+      .getMovies()
+      .then((movies) => {
+        // console.log(movies, "movies");
+        setMoviesSaved(movies);
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      getSavedMovies();
+    }
+  }, [getSavedMovies, loggedIn]);
 
   useEffect(() => {
     getAllMovies();
@@ -158,6 +177,7 @@ function App() {
               <ProtectedRouteElement
                 element={SavedMovies}
                 loggedIn={loggedIn}
+                moviesSaved={moviesSaved}
               />
             }
           />
