@@ -29,27 +29,57 @@ function App() {
   const navigate = useNavigate();
 
   function getAllMovies() {
-    moviesApi
-      .getFilms()
-      .then((movies) => {
-        setMovies(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const moviesBeatFilm = localStorage.getItem("movies");
+    if (!moviesBeatFilm) {
+      moviesApi
+        .getFilms()
+        .then((movies) => {
+          localStorage.setItem("movies", JSON.stringify(movies));
+          setMovies(movies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setMovies(JSON.parse(moviesBeatFilm));
+    }
   }
 
   const getSavedMovies = useCallback(() => {
     api
       .getMovies()
       .then((movies) => {
-        // console.log(movies, "movies");
         setMoviesSaved(movies);
       })
       .catch((err) => {
         handleError(err);
       });
   }, []);
+
+  function saveMovie(movie) {
+    api
+      .createMovie(movie)
+      .then((savedMovie) => {
+        setMoviesSaved((savedMovies) => [...savedMovies, savedMovie]);
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+  }
+
+  function deleteMovie(movieId) {
+    const movie = moviesSaved.find((film) => film.movieId === movieId);
+    api
+      .deleteMovie(movie._id)
+      .then(() => {
+        setMoviesSaved((movies) =>
+          movies.filter((film) => film.movieId !== movieId)
+        );
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+  }
 
   useEffect(() => {
     if (loggedIn) {
@@ -102,7 +132,7 @@ function App() {
       });
   }
 
-  function checkToken() {
+  const checkToken = useCallback(() => {
     api
       .getUser()
       .then((user) => {
@@ -110,12 +140,13 @@ function App() {
         setLoggedIn(true);
       })
       .catch((err) => {
+        localStorage.clear();
         handleError(err);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }
+  }, []);
 
   function handleUpdateUser({ name, email }) {
     api
@@ -141,7 +172,7 @@ function App() {
     } else {
       setIsLoading(false);
     }
-  }, []);
+  }, [checkToken]);
 
   if (isloading) return <Preloader />;
 
@@ -178,6 +209,7 @@ function App() {
                 element={SavedMovies}
                 loggedIn={loggedIn}
                 moviesSaved={moviesSaved}
+                onDeleteMovie={deleteMovie}
               />
             }
           />
@@ -188,6 +220,9 @@ function App() {
                 element={Movies}
                 loggedIn={loggedIn}
                 movies={movies}
+                onSavedMovie={saveMovie}
+                onDeleteMovie={deleteMovie}
+                moviesSaved={moviesSaved}
               />
             }
           />

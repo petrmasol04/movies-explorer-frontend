@@ -11,7 +11,7 @@ import {
 } from "../../utils/constants/index";
 import { useCallback, useEffect, useState } from "react";
 
-function Movies({ movies }) {
+function Movies({ movies, onSavedMovie, onDeleteMovie, moviesSaved }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [moviesToShow, setMoviesToShow] = useState([]);
 
@@ -71,7 +71,10 @@ function Movies({ movies }) {
       <MoviesCardList
         movies={moviesToShow}
         onClick={addMoviesCards}
+        onSavedMovie={onSavedMovie}
+        onDeleteMovie={onDeleteMovie}
         hasMoreButton={movies.length > moviesToShow.length}
+        moviesSaved={moviesSaved}
       />
     </main>
   );

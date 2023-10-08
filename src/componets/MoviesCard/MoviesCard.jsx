@@ -1,21 +1,45 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-
+import { handleDurationFromMins } from "../../utils/handleDurationFromMins";
 import "./MoviesCard.css";
 
-function MoviesCard({ id, nameRU, image, trailerLink }) {
-  const [liked, setLiked] = useState(false);
-  const location = useLocation();
-
+function MoviesCard({
+  id,
+  nameRU,
+  image,
+  trailerLink,
+  onSavedMovie,
+  onDeleteMovie,
+  restData,
+  isLiked,
+  pathname,
+}) {
   const handleClick = () => {
-    setLiked(!liked);
+    if (!isLiked) {
+      const { country, director, duration, year, description, nameEN } =
+        restData;
+      onSavedMovie({
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        thumbnail: image,
+        movieId: id,
+        nameRU,
+        nameEN,
+      });
+    } else {
+      onDeleteMovie(id);
+    }
+    isLiked = !isLiked;
   };
 
   function changeButton() {
-    if (location.pathname === "/movies") {
-      return `card__like ${liked && "card__like_active"}`;
+    if (pathname === "/movies") {
+      return `card__like ${isLiked && "card__like_active"}`;
     }
-    if (location.pathname === "/saved-movies") {
+    if (pathname === "/saved-movies") {
       return "card__like card__like_delete";
     }
   }
@@ -25,7 +49,9 @@ function MoviesCard({ id, nameRU, image, trailerLink }) {
       <div className="card__wrapp">
         <div className="card__info">
           <h2 className="card__title">{nameRU}</h2>
-          <p className="card__duration">1ч 47м</p>
+          <p className="card__duration">
+            {handleDurationFromMins(restData.duration)}
+          </p>
         </div>
         <button
           className={changeButton()}
