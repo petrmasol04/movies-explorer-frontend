@@ -3,8 +3,6 @@ import { useState } from "react";
 import "./Navigation.css";
 
 function Navigation({ loggedIn }) {
-  // const location = useLocation();
-
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
 
   const openMenu = () => {

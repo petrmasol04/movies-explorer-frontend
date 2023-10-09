@@ -7,3 +7,5 @@ export const QUANTITY_CARD_MOBILE = 5;
 
 export const QUANTITY_CARD_DESKTOP_MORE = 3;
 export const QUANTITY_CARD_TAB_MORE = 2;
+
+export const SHORT_FILM_DURATION = 40;

@@ -14,6 +14,7 @@ import ProtectedRouteElement from "../ProtectedRouteElement/ProtectedRouteElemen
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { api } from "../../utils/MainApi";
 import Preloader from "../Preloader/Preloader";
+import { SHORT_FILM_DURATION } from "../../utils/constants";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -26,26 +27,44 @@ function App() {
   const [isloading, setIsLoading] = useState(true);
   const [infoText, setInfoText] = useState("");
   const [isError, setIsError] = useState(true);
+  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
   const navigate = useNavigate();
 
-  function getAllMovies() {
-    const moviesBeatFilm = localStorage.getItem("movies");
-    if (!moviesBeatFilm) {
-      moviesApi
-        .getFilms()
-        .then((movies) => {
-          localStorage.setItem("movies", JSON.stringify(movies));
-          setMovies(movies);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  function searchMovies(movies, keySearch) {
+    const search = keySearch.toLowerCase();
+    return movies.filter(
+      (film) =>
+        film.nameRU.toLowerCase().includes(search) ||
+        film.nameEN.toLowerCase().includes(search)
+    );
+  }
+
+  function filterFilmsOnCheckbox(isChecked, movies) {
+    if (isChecked) {
+      return movies.filter((film) => film.duration <= SHORT_FILM_DURATION);
     } else {
-      setMovies(JSON.parse(moviesBeatFilm));
+      return movies;
     }
   }
 
+  function getAllMovies() {
+    setIsMoviesLoading(true);
+    moviesApi
+      .getFilms()
+      .then((movies) => {
+        localStorage.setItem("movies", JSON.stringify(movies));
+        setMovies(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsMoviesLoading(false);
+      });
+  }
+
   const getSavedMovies = useCallback(() => {
+    setIsMoviesLoading(true);
     api
       .getMovies()
       .then((movies) => {
@@ -53,6 +72,9 @@ function App() {
       })
       .catch((err) => {
         handleError(err);
+      })
+      .finally(() => {
+        setIsMoviesLoading(false);
       });
   }, []);
 
@@ -80,16 +102,6 @@ function App() {
         handleError(err);
       });
   }
-
-  useEffect(() => {
-    if (loggedIn) {
-      getSavedMovies();
-    }
-  }, [getSavedMovies, loggedIn]);
-
-  useEffect(() => {
-    getAllMovies();
-  }, []);
 
   function handleRegister({ name, email, password }) {
     setIsLoading(true);
@@ -124,6 +136,7 @@ function App() {
       .logOut()
       .then(() => {
         setLoggedIn(false);
+        setMovies([]);
         localStorage.clear();
         navigate("/", { replace: true });
       })
@@ -165,6 +178,20 @@ function App() {
     setInfoText(err);
     setIsError(true);
   }
+
+  useEffect(() => {
+    if (loggedIn) {
+      getSavedMovies();
+    }
+  }, [getSavedMovies, loggedIn]);
+
+  useEffect(() => {
+    const moviesBeatFilm = localStorage.getItem("movies");
+    if (moviesBeatFilm) {
+      const films = JSON.parse(moviesBeatFilm);
+      setMovies(films);
+    }
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("isLogin")) {
@@ -210,6 +237,8 @@ function App() {
                 loggedIn={loggedIn}
                 moviesSaved={moviesSaved}
                 onDeleteMovie={deleteMovie}
+                filterFilmsOnCheckbox={filterFilmsOnCheckbox}
+                searchMovies={searchMovies}
               />
             }
           />
@@ -223,6 +252,10 @@ function App() {
                 onSavedMovie={saveMovie}
                 onDeleteMovie={deleteMovie}
                 moviesSaved={moviesSaved}
+                filterFilmsOnCheckbox={filterFilmsOnCheckbox}
+                searchMovies={searchMovies}
+                getAllMovies={getAllMovies}
+                isMoviesLoading={isMoviesLoading}
               />
             }
           />

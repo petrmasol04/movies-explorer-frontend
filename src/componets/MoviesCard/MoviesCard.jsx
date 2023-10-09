@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { handleDurationFromMins } from "../../utils/handleDurationFromMins";
 import "./MoviesCard.css";
 
@@ -60,7 +61,14 @@ function MoviesCard({
           aria-label="Кнопка лайка"
         />
       </div>
-      <img className="card__image" src={image} alt="Изображение фильма" />
+      <a
+        className="card__link"
+        href={trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img className="card__image" src={image} alt="Изображение фильма" />
+      </a>
     </li>
   );
 }
