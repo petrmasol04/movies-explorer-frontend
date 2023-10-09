@@ -90,7 +90,7 @@ class Api {
             .then(res => this._handleRequest(res));
     }
 }
-// movies-diplomnaya.nomoredomainsrocks.ru
+
 const apiConfig = {
     baseUrl: 'https://api.movies-diplomnaya.nomoredomainsrocks.ru',
     headers: {
