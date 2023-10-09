@@ -2,7 +2,7 @@
 
 Фронтенд проекта: [GitHub](https://github.com/petrmasol04/movies-explorer-frontend)
 
-Макет Figma: [Yandex Cloud](https://disk.yandex.com.am/d/dtwtyKjKc-DzMQ)
+Макет Figma: [Yandex Cloud](<https://www.figma.com/file/kXfYEWtQKo5VVAcWMSntbP/Diploma-(Copy)?node-id=891%3A3857&mode=dev>)
 
 Pull Request: [Pull Request](https://github.com/petrmasol04/movies-explorer-frontend/pull/4)
 
