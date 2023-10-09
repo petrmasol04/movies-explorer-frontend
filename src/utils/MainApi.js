@@ -92,7 +92,7 @@ class Api {
 }
 // movies-diplomnaya.nomoredomainsrocks.ru
 const apiConfig = {
-    baseUrl: 'https://movies-diplomnaya.nomoredomainsrocks.ru',
+    baseUrl: 'https://api.movies-diplomnaya.nomoredomainsrocks.ru',
     headers: {
         'Content-Type': 'application/json'
     }
