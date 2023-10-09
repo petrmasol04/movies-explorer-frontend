@@ -104,7 +104,6 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
-    setIsLoading(true);
     api
       .registerUser(name, email, password)
       .then(() => {
@@ -112,12 +111,10 @@ function App() {
       })
       .catch((err) => {
         handleError(err);
-        setIsLoading(false);
       });
   }
 
   function handleLogin({ email, password }) {
-    setIsLoading(true);
     api
       .loginUser(email, password)
       .then(() => {
@@ -127,7 +124,6 @@ function App() {
       })
       .catch((err) => {
         handleError(err);
-        setIsLoading(false);
       });
   }
 
@@ -146,6 +142,7 @@ function App() {
   }
 
   const checkToken = useCallback(() => {
+    setIsLoading(true);
     api
       .getUser()
       .then((user) => {
