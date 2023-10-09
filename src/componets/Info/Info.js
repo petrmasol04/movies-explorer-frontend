@@ -2,7 +2,7 @@ import './Info.css';
 
 function Info() {
     return (
-        <div className="info">Ничего не найдено</div>
+        <p className="info">Ничего не найдено</p>
     )
 }
 export default Info;

@@ -1,4 +1,3 @@
-import { useFormValidation } from "../../hooks/useFormValidation";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 import "./SearchForm.css";
@@ -25,7 +24,6 @@ function SearchForm({
           id="search"
           autoComplete="off"
           type="text"
-          minLength="1"
           value={inputValue}
           onChange={onInputChange}
         />

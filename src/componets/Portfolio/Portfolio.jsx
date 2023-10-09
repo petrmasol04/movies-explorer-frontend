@@ -20,7 +20,7 @@ function Portfolio() {
             <li className="portfolio__list-item">
               <Link
                 className="portfolio__link"
-                to="//github.com/petrmasol04/how-to-learn" /* При переходе у меня все открывается... */
+                to="//github.com/petrmasol04/how-to-learn"
                 target="_blank"
               >
                 Адаптивный сайт <span>↗</span>

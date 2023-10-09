@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { handleDurationFromMins } from "../../utils/handleDurationFromMins";
 import "./MoviesCard.css";
 
