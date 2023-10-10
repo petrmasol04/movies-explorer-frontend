@@ -41,6 +41,7 @@ function Movies({
         return;
       }
       const filteredMovies = filterFilmsOnCheckbox(isChecked, movies);
+      localStorage.setItem("moviesSearch", search);
       if (search) {
         const movies = searchMovies(filteredMovies, search);
         setFilteredMovies(movies);
@@ -61,7 +62,7 @@ function Movies({
     if (!localStorage.getItem("movies")) {
       getAllMovies();
     }
-    localStorage.setItem("moviesSearch", values.search);
+    // localStorage.setItem("moviesSearch", values.search);
     filterMovies(isChecked, values.search);
   }
 
