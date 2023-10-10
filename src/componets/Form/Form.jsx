@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import "./Form.css";
 
@@ -19,6 +19,7 @@ function Form({
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(values);
+    setIsInputActive(false);
   }
 
   function handleRedactClick() {
@@ -75,27 +76,25 @@ function Form({
             />
           </label>
           <span className="form__error center">{errors.email}</span>
+          <span
+            className={`form__notification form__notification_type_profile ${
+              !isError ? "form__notification_type_success" : ""
+            }`}
+          >
+            {infoText}
+          </span>
           {isInputActive ? (
-            <>
-              <span
-                className={`form__notification form__notification_type_profile ${
-                  !isError ? "form__notification_type_success" : ""
-                }`}
-              >
-                {infoText}
-              </span>
-              <button
-                className="form__btn form__btn_type_submit"
-                type="submit"
-                disabled={
-                  !isValid ||
-                  (values.name === initialValues.name &&
-                    values.email === initialValues.email)
-                }
-              >
-                Сохранить
-              </button>
-            </>
+            <button
+              className="form__btn form__btn_type_submit"
+              type="submit"
+              disabled={
+                !isValid ||
+                (values.name === initialValues.name &&
+                  values.email === initialValues.email)
+              }
+            >
+              Сохранить
+            </button>
           ) : (
             <>
               <button

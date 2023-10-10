@@ -159,6 +159,7 @@ function App() {
   }, []);
 
   function handleUpdateUser({ name, email }) {
+    setIsError(true);
     api
       .updateUser(name, email)
       .then((user) => {
