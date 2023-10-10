@@ -12,6 +12,11 @@ function Login({ loggedIn, onSignin, infoText, setInfoText }) {
       navigate("/", { replace: true });
     }
   }, [loggedIn, navigate]);
+
+  useEffect(() => {
+    setInfoText("");
+  }, [setInfoText]);
+
   return (
     <section className="login">
       <div className="login__container">

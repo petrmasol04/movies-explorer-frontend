@@ -13,6 +13,10 @@ function Register({ loggedIn, onSignup, infoText, setInfoText }) {
     }
   }, [loggedIn, navigate]);
 
+  useEffect(() => {
+    setInfoText("");
+  }, [setInfoText]);
+
   return (
     <section className="register">
       <div className="register__container">
