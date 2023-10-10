@@ -9,34 +9,31 @@ function Portfolio() {
         <nav>
           <ul className="portfolio__list">
             <li className="portfolio__list-item">
-              <a
+              <Link
                 className="portfolio__link"
-                href="https://github.com/petrmasol04/russian-travel "
+                to="//github.com/petrmasol04/russian-travel"
                 target="_blank"
-                rel="noreferrer"
               >
                 Статичный сайт <span>↗</span>
-              </a>
+              </Link>
             </li>
             <li className="portfolio__list-item">
-              <a
+              <Link
                 className="portfolio__link"
-                href="https://github.com/petrmasol04/how-to-learn" /* При переходе у меня все открывается... */
+                to="//github.com/petrmasol04/how-to-learn"
                 target="_blank"
-                rel="noreferrer"
               >
                 Адаптивный сайт <span>↗</span>
-              </a>
+              </Link>
             </li>
             <li className="portfolio__list-item">
-              <a
+              <Link
                 className="portfolio__link"
-                href="https://github.com/petrmasol04/react-mesto-api-full-gha"
+                to="//github.com/petrmasol04/react-mesto-api-full-gha"
                 target="_blank"
-                rel="noreferrer"
               >
                 Одностраничное приложение <span>↗</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

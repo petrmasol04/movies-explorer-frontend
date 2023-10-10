@@ -15,17 +15,15 @@ function AboutMe() {
               Я&nbsp;живу в&nbsp;Санкт-Петербурге. Закончил факультет
               строительства автомобильных дорог в&nbsp;СПбГАСУ . Люблю активный
               отдых, такие как горнолыжный спорт, эндуринг, вэйк и сап сёрф.
-              Кодить начал меньше года назад. Начал с простой вёрстки и тут
-              понеслось.
+              Кодить начал меньше года. Начал с простой вёрстки и тут понеслось.
             </p>
-            <a
+            <Link
               className="about__link"
               target="_blank"
-              href="https://github.com/petrmasol04/"
-              rel="noreferrer"
+              to="https://github.com/petrmasol04/"
             >
               Github
-            </a>
+            </Link>
           </div>
           <img className="about__photo" src={myPhoto} alt="Фото студента" />
         </div>

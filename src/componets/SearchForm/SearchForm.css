@@ -8,7 +8,6 @@
 }
 
 .search__form {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;

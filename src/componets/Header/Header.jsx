@@ -3,7 +3,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
-function Header() {
+function Header({ loggedIn }) {
   const pathesWithHeader = ["/", "/saved-movies", "/movies", "/profile"];
   const { pathname } = useLocation();
   const hideHeader = pathesWithHeader.includes(pathname);
@@ -16,7 +16,7 @@ function Header() {
       <header className={headerClassNames}>
         <div className="header__container container">
           <Logo />
-          <Navigation />
+          <Navigation loggedIn={loggedIn} />
         </div>
       </header>
     )

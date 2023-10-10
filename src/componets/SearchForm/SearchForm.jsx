@@ -2,10 +2,21 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({
+  onFilterClick,
+  isChecked,
+  inputValue = "",
+  onInputChange,
+  onSubmit,
+}) {
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onSubmit();
+  }
+
   return (
     <section className="search search__container container">
-      <form className="search__form">
+      <form className="form search__form" onSubmit={handleSubmit}>
         <input
           className="search__input"
           placeholder="Фильм"
@@ -13,12 +24,14 @@ function SearchForm() {
           id="search"
           autoComplete="off"
           type="text"
+          value={inputValue}
+          onChange={onInputChange}
         />
         <button className="search__btn" type="submit">
           Найти
         </button>
       </form>
-      <FilterCheckbox />
+      <FilterCheckbox onFilterClick={onFilterClick} isChecked={isChecked} />
     </section>
   );
 }
