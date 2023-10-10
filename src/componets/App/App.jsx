@@ -211,6 +211,7 @@ function App() {
             path="/signin"
             element={
               <Login
+                loggedIn={loggedIn}
                 onSignin={handleLogin}
                 infoText={infoText}
                 setInfoText={setInfoText}
@@ -221,6 +222,7 @@ function App() {
             path="/signup"
             element={
               <Register
+                loggedIn={loggedIn}
                 onSignup={handleRegister}
                 infoText={infoText}
                 setInfoText={setInfoText}

@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "../Form/Form";
 import Logo from "../Logo/Logo";
 import "./Login.css";
+import { useEffect } from "react";
 
-function Login({ onSignin, infoText, setInfoText }) {
+function Login({ loggedIn, onSignin, infoText, setInfoText }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [loggedIn, navigate]);
   return (
     <section className="login">
       <div className="login__container">

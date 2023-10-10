@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "../Form/Form";
 import Logo from "../Logo/Logo";
 import "./Register.css";
+import { useEffect } from "react";
 
-function Register({ onSignup, infoText, setInfoText }) {
+function Register({ loggedIn, onSignup, infoText, setInfoText }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [loggedIn, navigate]);
+
   return (
     <section className="register">
       <div className="register__container">
